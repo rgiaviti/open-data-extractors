@@ -7,6 +7,7 @@ import com.gh.rgiaviti.ods.json.JSONSerialize.toJSON
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.system.exitProcess
 
 object UFSParser {
 
@@ -15,10 +16,14 @@ object UFSParser {
 
     @JvmStatic
     fun main(args: Array<String>) {
+        // Checa a presença dos argumentos
+        checkArguments(args)
+
         val path = args[0]
         val version = args[1]
         val dataUltimaReferencia = SimpleDateFormat("yyyy-MM-dd").parse(args[2])
 
+        // Parses
         val ufs = parse(File(path))
         val metaInfo = metaInfo(dataUltimaReferencia, version)
         val openDataUF = OpenDataUF(metaInfo, ufs)
@@ -43,5 +48,19 @@ object UFSParser {
             WEBSITE,
             FONTES
         )
+    }
+
+    private fun checkArguments(args: Array<String>) {
+        if (args.size < 4) {
+            println("Erro - Número de argumentos inválido.")
+            println("Necessário pelo menos 3 argumentos")
+            println("Exemplo: <path csv> <versao ufs> <data de ref. yyyy-MM-dd> [opcional - arquivo saida]")
+            exitProcess(1)
+        }
+
+        val planilha = args[0]
+        if (!File(planilha).isFile || !File(planilha).canRead()) {
+            println("O CSV passado não é arquivo ou não permite leitura")
+        }
     }
 }
