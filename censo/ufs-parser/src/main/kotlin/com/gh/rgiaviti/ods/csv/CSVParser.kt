@@ -1,0 +1,68 @@
+package com.gh.rgiaviti.ods.csv
+
+import com.gh.rgiaviti.ods.domains.NotasAdicionais
+import com.gh.rgiaviti.ods.domains.UnidadeFederativa
+import org.apache.commons.csv.CSVFormat
+import org.apache.commons.csv.CSVRecord
+import java.io.File
+import java.io.FileReader
+
+
+object CSVParser {
+
+    private const val UF_HEADER = "UF"
+    private const val SIGLA_HEADER = "Sigla"
+    private const val SEDE_HEADER = "Sede"
+    private const val POPULACAO_HEADER = "População"
+    private const val REGIAO_HEADER = "Região"
+    private const val AREA_HEADER = "Área"
+    private const val NOTA_POPULACIONAL = "Nota Populacional"
+
+    fun parse(path: File): List<UnidadeFederativa> {
+        val ufs = mutableListOf<UnidadeFederativa>()
+        val reader = FileReader(path)
+
+        reader.use {
+            val csvUfs: Iterable<CSVRecord> = getCSVFormat().parse(reader)
+            csvUfs.forEach { csvUf ->
+                ufs.add(getUF(csvUf))
+            }
+        }
+
+        return ufs
+    }
+
+    private fun getUF(record: CSVRecord): UnidadeFederativa {
+        val notasAdicionais = NotasAdicionais(
+            record.get(NOTA_POPULACIONAL),
+            emptyList()
+        )
+
+        return UnidadeFederativa(
+            record.get(UF_HEADER),
+            record.get(SIGLA_HEADER),
+            record.get(SEDE_HEADER),
+            record.get(REGIAO_HEADER),
+            record.get(POPULACAO_HEADER).toInt(),
+            record.get(AREA_HEADER).toFloat(),
+            notasAdicionais
+        )
+    }
+
+    private fun getCSVFormat(): CSVFormat {
+        return CSVFormat.RFC4180
+            .withAllowMissingColumnNames(false)
+            .withIgnoreEmptyLines(true)
+            .withAllowMissingColumnNames(false)
+            .withSkipHeaderRecord(true)
+            .withHeader(
+                UF_HEADER,
+                SIGLA_HEADER,
+                SEDE_HEADER,
+                POPULACAO_HEADER,
+                REGIAO_HEADER,
+                AREA_HEADER,
+                NOTA_POPULACIONAL
+            )
+    }
+}
