@@ -3,7 +3,7 @@ package com.gh.rgiaviti.ods
 import com.gh.rgiaviti.ods.csv.CSVParser.parse
 import com.gh.rgiaviti.ods.domains.MetaInfo
 import com.gh.rgiaviti.ods.domains.OpenDataUF
-import com.gh.rgiaviti.ods.json.JSONSerialize.toJSON
+import com.gh.rgiaviti.ods.json.JSONSerialize
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -29,7 +29,7 @@ object UFSParser {
         val openDataUF = OpenDataUF(metaInfo, ufs)
 
         // Serializa para JSON
-        val jsonUfs = toJSON(openDataUF)
+        val jsonUfs = JSONSerialize().toJSON(openDataUF)
 
         // Saída para arquivo
         if (args.size == 4 && args[3].isNotEmpty()) {
@@ -51,7 +51,7 @@ object UFSParser {
     }
 
     private fun checkArguments(args: Array<String>) {
-        if (args.size < 4) {
+        if (args.size < 3) {
             println("Erro - Número de argumentos inválido.")
             println("Necessário pelo menos 3 argumentos")
             println("Exemplo: <path csv> <versao ufs> <data de ref. yyyy-MM-dd> [opcional - arquivo saida]")
