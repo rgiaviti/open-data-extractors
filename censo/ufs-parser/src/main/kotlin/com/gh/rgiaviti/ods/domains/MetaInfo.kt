@@ -3,18 +3,18 @@ package com.gh.rgiaviti.ods.domains
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import java.time.LocalDate
+import java.util.*
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class MetaInfo(
 
     @JsonProperty("data-ultima-atualizacao")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    val dataUltimaAtualizacao: LocalDate,
+    val dataUltimaAtualizacao: Date,
 
     @JsonProperty("data-ultima-referencia")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    val dataReferencia: LocalDate,
+    val dataReferencia: Date,
 
     @JsonProperty("versao")
     val versao: String,

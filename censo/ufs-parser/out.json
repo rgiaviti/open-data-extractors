@@ -1,0 +1,307 @@
+{
+  "metaInfo" : {
+    "versao" : "1.0.4",
+    "website" : "https://github.com/rgiaviti/open-data",
+    "fontes" : [ "IBGE", "Constituição Federal do Brasil" ],
+    "dataUltimaAtualizacao" : "2020-06-13T02:22:29.897+00:00",
+    "dataReferencia" : "2019-07-01T03:00:00.000+00:00"
+  },
+  "unidadesFederativas" : [ {
+    "abreviacao" : "RO",
+    "sede" : "Porto Velho",
+    "regiao" : "Norte",
+    "area" : 237765.23,
+    "unidadeFerativa" : "Rondônia",
+    "populacaoEstimada" : 1777225,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "AC",
+    "sede" : "Rio Branco",
+    "regiao" : "Norte",
+    "area" : 164123.97,
+    "unidadeFerativa" : "Acre",
+    "populacaoEstimada" : 881935,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "AM",
+    "sede" : "Manaus",
+    "regiao" : "Norte",
+    "area" : 1559167.9,
+    "unidadeFerativa" : "Amazonas",
+    "populacaoEstimada" : 4144597,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "RR",
+    "sede" : "Boa Vista",
+    "regiao" : "Norte",
+    "area" : 223644.53,
+    "unidadeFerativa" : "Roraima",
+    "populacaoEstimada" : 605761,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "PA",
+    "sede" : "Belém",
+    "regiao" : "Norte",
+    "area" : 1245870.8,
+    "unidadeFerativa" : "Pará",
+    "populacaoEstimada" : 8602865,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "AP",
+    "sede" : "Macapá",
+    "regiao" : "Norte",
+    "area" : 142470.77,
+    "unidadeFerativa" : "Amapá",
+    "populacaoEstimada" : 845731,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "TO",
+    "sede" : "Palmas",
+    "regiao" : "Norte",
+    "area" : 277466.75,
+    "unidadeFerativa" : "Tocantins",
+    "populacaoEstimada" : 1572866,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "MA",
+    "sede" : "São Luís",
+    "regiao" : "Nordeste",
+    "area" : 329642.2,
+    "unidadeFerativa" : "Maranhão",
+    "populacaoEstimada" : 7075181,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "PI",
+    "sede" : "Teresina",
+    "regiao" : "Nordeste",
+    "area" : 251756.52,
+    "unidadeFerativa" : "Piauí",
+    "populacaoEstimada" : 3273227,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : "Diferença de 780 pessoas entre os Estados do Piauí e Ceará com relação a Projeção da População para o Brasil e Unidades da Federação 2019, para o ano de 2019, em virtude de alteração de limites entre municípios na fronteira interestadual."
+    }
+  }, {
+    "abreviacao" : "CE",
+    "sede" : "Fortaleza",
+    "regiao" : "Nordeste",
+    "area" : 148894.44,
+    "unidadeFerativa" : "Ceará",
+    "populacaoEstimada" : 9132078,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : "Diferença de 780 pessoas entre os Estados do Piauí e Ceará com relação a Projeção da População para o Brasil e Unidades da Federação 2019, para o ano de 2019, em virtude de alteração de limites entre municípios na fronteira interestadual."
+    }
+  }, {
+    "abreviacao" : "RN",
+    "sede" : "Natal",
+    "regiao" : "Nordeste",
+    "area" : 52809.6,
+    "unidadeFerativa" : "Rio Grande do Norte",
+    "populacaoEstimada" : 3506853,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "PB",
+    "sede" : "João Pessoa",
+    "regiao" : "Nordeste",
+    "area" : 56467.242,
+    "unidadeFerativa" : "Paraíba",
+    "populacaoEstimada" : 4018127,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "PE",
+    "sede" : "Recife",
+    "regiao" : "Nordeste",
+    "area" : 98067.88,
+    "unidadeFerativa" : "Pernambuco",
+    "populacaoEstimada" : 9557071,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : "Diferença de 446 pessoas entre os Estados de Alagoas e Pernambuco com relação a Projeção da População para o Brasil e Unidades da Federação 2019, para o ano de 2019, em virtude de alteração de limites entre municípios na fronteira interestadual."
+    }
+  }, {
+    "abreviacao" : "AL",
+    "sede" : "Maceió",
+    "regiao" : "Nordeste",
+    "area" : 27843.295,
+    "unidadeFerativa" : "Alagoas",
+    "populacaoEstimada" : 3337357,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : "Diferença de 446 pessoas entre os Estados de Alagoas e Pernambuco com relação a Projeção da População para o Brasil e Unidades da Federação 2019, para o ano de 2019, em virtude de alteração de limites entre municípios na fronteira interestadual."
+    }
+  }, {
+    "abreviacao" : "SE",
+    "sede" : "Aracajú",
+    "regiao" : "Nordeste",
+    "area" : 21925.424,
+    "unidadeFerativa" : "Sergipe",
+    "populacaoEstimada" : 2298696,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : "Diferença de 206 pessoas entre os Estados de Sergipe e Bahia com relação a Projeção da População para o Brasil e Unidades da Federação 2019, para o ano de 2019, em virtude de alteração de limites entre municípios na fronteira interestadual."
+    }
+  }, {
+    "abreviacao" : "BA",
+    "sede" : "Salvador",
+    "regiao" : "Nordeste",
+    "area" : 564760.44,
+    "unidadeFerativa" : "Bahia",
+    "populacaoEstimada" : 14873064,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : "Diferença de 206 pessoas entre os Estados de Sergipe e Bahia com relação a Projeção da População para o Brasil e Unidades da Federação 2019, para o ano de 2019, em virtude de alteração de limites entre municípios na fronteira interestadual."
+    }
+  }, {
+    "abreviacao" : "MG",
+    "sede" : "Belo Horizonte",
+    "regiao" : "Sudeste",
+    "area" : 586521.1,
+    "unidadeFerativa" : "Minas Gerais",
+    "populacaoEstimada" : 21168791,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "ES",
+    "sede" : "Vitória",
+    "regiao" : "Sudeste",
+    "area" : 46074.445,
+    "unidadeFerativa" : "Espírito Santo",
+    "populacaoEstimada" : 4018650,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "RJ",
+    "sede" : "Rio de Janeiro",
+    "regiao" : "Sudeste",
+    "area" : 43750.426,
+    "unidadeFerativa" : "Rio de Janeiro",
+    "populacaoEstimada" : 17264943,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "SP",
+    "sede" : "São Paulo",
+    "regiao" : "Sudeste",
+    "area" : 248219.48,
+    "unidadeFerativa" : "São Paulo",
+    "populacaoEstimada" : 45919049,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "PR",
+    "sede" : "Curitiba",
+    "regiao" : "Sul",
+    "area" : 199298.98,
+    "unidadeFerativa" : "Paraná",
+    "populacaoEstimada" : 11433957,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "SC",
+    "sede" : "Florianópolis",
+    "regiao" : "Sul",
+    "area" : 95730.69,
+    "unidadeFerativa" : "Santa Catarina",
+    "populacaoEstimada" : 7164788,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "RS",
+    "sede" : "Porto Alegre",
+    "regiao" : "Sul",
+    "area" : 281707.16,
+    "unidadeFerativa" : "Rio Grande do Sul",
+    "populacaoEstimada" : 11377239,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "MS",
+    "sede" : "Campo Grande",
+    "regiao" : "Centro-Oeste",
+    "area" : 357145.53,
+    "unidadeFerativa" : "Mato Grosso do Sul",
+    "populacaoEstimada" : 2778986,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "MT",
+    "sede" : "Cuiabá",
+    "regiao" : "Centro-Oeste",
+    "area" : 903207.0,
+    "unidadeFerativa" : "Mato Grosso",
+    "populacaoEstimada" : 3484466,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : ""
+    }
+  }, {
+    "abreviacao" : "GO",
+    "sede" : "Goiânia",
+    "regiao" : "Centro-Oeste",
+    "area" : 340203.34,
+    "unidadeFerativa" : "Goiás",
+    "populacaoEstimada" : 7018354,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : "Diferença de 2.250 pessoas entre o Estado de Goiás e o Distrito Federal com relação a Projeção da População para o Brasil e Unidades da Federação 2019, para o ano de 2019, em virtude de alteração de limites entre municípios na fronteira interestadual."
+    }
+  }, {
+    "abreviacao" : "DF",
+    "sede" : "Brasília",
+    "regiao" : "Centro-Oeste",
+    "area" : 5760.783,
+    "unidadeFerativa" : "Distrito Federal",
+    "populacaoEstimada" : 3015268,
+    "notasAdicionais" : {
+      "mensagens" : [ ],
+      "notaPopulacional" : "Diferença de 2.250 pessoas entre o Estado de Goiás e o Distrito Federal com relação a Projeção da População para o Brasil e Unidades da Federação 2019, para o ano de 2019, em virtude de alteração de limites entre municípios na fronteira interestadual."
+    }
+  } ]
+}
