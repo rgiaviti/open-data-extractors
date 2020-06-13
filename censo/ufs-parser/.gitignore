@@ -1,6 +1,8 @@
 # This is a template of complete .gitignore that I use in my Java projects.
 # Based on GitHub oficial gitignore templates: https://github.com/github/gitignore
 
+out.json
+
 #====================
 # JAVA IGNORE FILES
 #====================

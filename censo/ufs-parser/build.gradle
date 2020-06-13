@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation "com.fasterxml.jackson.core:jackson-databind:2.11.0"
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0"
     implementation "com.fasterxml.jackson.module:jackson-modules-java8:2.11.0"
@@ -24,4 +24,13 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "11"
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.gh.rgiaviti.ods.UFSParser'
+    }
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
 }
