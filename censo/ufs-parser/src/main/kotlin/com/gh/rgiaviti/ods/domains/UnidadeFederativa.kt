@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class UnidadeFederativa (
+data class UnidadeFederativa(
 
     @JsonProperty("unidade-federativa")
     val unidadeFerativa: String,

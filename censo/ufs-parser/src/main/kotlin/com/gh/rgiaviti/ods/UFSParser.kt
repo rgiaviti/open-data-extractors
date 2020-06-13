@@ -5,14 +5,15 @@ import com.gh.rgiaviti.ods.domains.MetaInfo
 import com.gh.rgiaviti.ods.domains.OpenDataUF
 import com.gh.rgiaviti.ods.json.JSONSerialize
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import kotlin.system.exitProcess
 
 object UFSParser {
 
-    private const val WEBSITE = "https://github.com/rgiaviti/open-data"
+    private const val WEBSITE = "https://github.com/rgiaviti/open-data/tree/master/censo"
     private val FONTES = listOf("IBGE", "Constituição Federal do Brasil")
+    private val dateParser = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -21,7 +22,7 @@ object UFSParser {
 
         val path = args[0]
         val version = args[1]
-        val dataUltimaReferencia = SimpleDateFormat("yyyy-MM-dd").parse(args[2])
+        val dataUltimaReferencia = LocalDate.parse(args[2], dateParser)
 
         // Parses
         val ufs = parse(File(path))
@@ -40,9 +41,9 @@ object UFSParser {
         println(jsonUfs)
     }
 
-    private fun metaInfo(dataUltimaReferencia: Date, versao: String): MetaInfo {
+    private fun metaInfo(dataUltimaReferencia: LocalDate, versao: String): MetaInfo {
         return MetaInfo(
-            Date(),
+            LocalDate.now(),
             dataUltimaReferencia,
             versao,
             WEBSITE,
