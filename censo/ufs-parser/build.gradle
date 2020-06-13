@@ -33,4 +33,5 @@ jar {
     from {
         configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
     }
+    baseName 'ufsparser'
 }
