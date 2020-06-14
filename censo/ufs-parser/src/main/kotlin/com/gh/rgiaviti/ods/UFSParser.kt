@@ -12,7 +12,7 @@ import kotlin.system.exitProcess
 object UFSParser {
 
     private const val WEBSITE = "https://github.com/rgiaviti/open-data/tree/master/censo"
-    private val FONTES = listOf("IBGE", "Constituição Federal do Brasil")
+    private val FONTES = listOf("IBGE", "Constituição Federal do Brasil", "Senado Federal")
     private val dateParser = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
     @JvmStatic

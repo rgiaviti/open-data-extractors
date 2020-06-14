@@ -15,6 +15,9 @@ data class UnidadeFederativa(
     @JsonProperty("sede")
     val sede: String,
 
+    @JsonProperty("gentilico")
+    val gentilico: String,
+
     @JsonProperty("regiao")
     val regiao: String,
 
