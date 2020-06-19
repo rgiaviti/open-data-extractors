@@ -10,9 +10,10 @@ object Config {
         START_LETTERS("start-letters"),
         COMPANIES_RESUME_URL("companies-resume-url"),
         COMPANY_DETAIL_URL("company-details-url"),
-        TIME_BETWEEN_LETTERS("time-in-sec-between-letters"),
-        TIME_BETWEEN_DETAILS("time-in-sec-between-details");
-
+        BROWSER_USER_AGENT("user-agent"),
+        TIME_BETWEEN_LETTERS("time-in-millis-between-letters"),
+        TIME_BETWEEN_DETAILS("time-in-millis-between-details"),
+        CONNECTION_TIMEOUT("connection-in-millis-timeout");
 
         override fun toString(): String {
             return key;
