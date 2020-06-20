@@ -15,14 +15,10 @@ data class MetaInfo(
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     val dataUltimaAtualizacao: LocalDate,
 
-    @JsonProperty("data-ultima-referencia")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    val dataReferencia: LocalDate,
-
     @JsonProperty("versao")
     val versao: String,
 
-    @JsonProperty("website")
+    @JsonProperty("site")
     val website: String,
 
     @JsonProperty("fontes")

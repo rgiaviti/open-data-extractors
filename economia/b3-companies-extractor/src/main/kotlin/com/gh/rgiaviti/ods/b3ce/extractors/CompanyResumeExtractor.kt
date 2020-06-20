@@ -4,7 +4,6 @@ import com.gh.rgiaviti.ods.b3ce.configs.Config.Key.*
 import com.gh.rgiaviti.ods.b3ce.configs.Config.getConfig
 import com.gh.rgiaviti.ods.b3ce.extractors.dtos.CompanyResume
 import org.slf4j.LoggerFactory
-import java.net.URL
 
 object CompanyResumeExtractor : Extractor() {
 

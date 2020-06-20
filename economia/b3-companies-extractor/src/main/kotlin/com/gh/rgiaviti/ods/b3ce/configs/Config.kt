@@ -13,7 +13,11 @@ object Config {
         BROWSER_USER_AGENT("user-agent"),
         TIME_BETWEEN_LETTERS("time-in-millis-between-letters"),
         TIME_BETWEEN_DETAILS("time-in-millis-between-details"),
-        CONNECTION_TIMEOUT("connection-in-millis-timeout");
+        CONNECTION_TIMEOUT("connection-in-millis-timeout"),
+        JSON_FILE_OUT("json-file-out"),
+        METAINFO_VERSION("metainfo-version"),
+        METAINFO_SITE("metainfo-site"),
+        METAINFO_FONTES("metainfo-fontes");
 
         override fun toString(): String {
             return key;
