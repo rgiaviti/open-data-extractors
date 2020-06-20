@@ -3,23 +3,33 @@ package com.gh.rgiaviti.ods.b3ce.extractors
 import com.gh.rgiaviti.ods.b3ce.configs.Config.Key.*
 import com.gh.rgiaviti.ods.b3ce.configs.Config.getConfig
 import com.gh.rgiaviti.ods.b3ce.extractors.dtos.CompanyResume
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
 import org.slf4j.LoggerFactory
 import java.net.URL
 
-object CompanyResumeExtractor {
+object CompanyResumeExtractor : Extractor() {
 
+    /**
+     * Logger
+     */
     private val log = LoggerFactory.getLogger(javaClass)
 
+    /**
+     * Caracter que separa as letras iniciais de cada empresa
+     */
     private const val SPLIT_LETTER_CHAR = ';'
-    private const val SELECTOR_TABLE =
-        "#ctl00_contentPlaceHolderConteudo_BuscaNomeEmpresa1_grdEmpresa_ctl01 > tbody > tr"
 
-    fun getCompaniesResume(): List<CompanyResume> {
-        return mutableListOf();
-    }
+    /**
+     * CSS selector da tabela de listagem de empresa
+     */
+    private const val SELECT_TABLE = "#ctl00_contentPlaceHolderConteudo_BuscaNomeEmpresa1_grdEmpresa_ctl01 > tbody > tr"
 
+    /**
+     * Extrai um "resumo" das empresas listadas na B3. Aqui é retornada uma lista com
+     * o resumo dessas empresas. A partir desse resumo, que contém a URL com os detalhes
+     * dela, é que é possível obter todos os detalhes referentes a essa empresa.
+     *
+     * @return lista com o resumo das empresas
+     */
     fun extractResumes(): List<CompanyResume> {
         val companiesListUrlByLetter = this.companiesListByLetter();
         val timeBetweenLetters = getConfig(TIME_BETWEEN_LETTERS).toLong()
@@ -35,7 +45,6 @@ object CompanyResumeExtractor {
         return companies
     }
 
-
     /**
      * Faz o scrap dos dados básicos (nome, cvm e url dos detalhes) da listagem de empresas que
      * há na tabela HTML nessa página. A partir dessa listagem de empresas, nós podemos iniciar
@@ -45,11 +54,10 @@ object CompanyResumeExtractor {
         val companiesResume = mutableListOf<CompanyResume>()
         val detailBaseUrl = getConfig(COMPANY_DETAIL_URL)
 
-        this.html(url).select(SELECTOR_TABLE).forEach { element ->
+        this.html(url).select(SELECT_TABLE).forEach { element ->
             val name = element.select("td")[0].text();
             val cvm = element.select("td > a").attr("href").split('=')[1].trim()
-            val detailUrl = URL(detailBaseUrl + cvm)
-            companiesResume.add(CompanyResume(name, cvm, detailUrl))
+            companiesResume.add(CompanyResume(name, cvm, detailBaseUrl + cvm))
         }
 
         return companiesResume
@@ -65,17 +73,5 @@ object CompanyResumeExtractor {
         val resumeUrl = getConfig(COMPANIES_RESUME_URL)
         letters.forEach { letter -> urlList.add(resumeUrl + letter) }
         return urlList
-    }
-
-    private fun html(url: String): Document {
-        val userAgent = getConfig(BROWSER_USER_AGENT)
-        val timeout = getConfig(CONNECTION_TIMEOUT).toInt()
-
-        return Jsoup
-            .connect(url)
-            .userAgent(userAgent)
-            .timeout(timeout)
-            .followRedirects(true)
-            .get()
     }
 }

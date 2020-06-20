@@ -10,10 +10,10 @@ data class Company(
     val nome: String,
 
     @JsonProperty("codigo-cvm")
-    val cvm: Int,
+    val cvm: String,
 
-    @JsonProperty("ticker")
-    val ticker: String,
+    @JsonProperty("tickers")
+    val tickers: Set<String>,
 
     @JsonProperty("nome-pregao")
     val nomePregao: String,
@@ -25,12 +25,8 @@ data class Company(
     val atividade: String,
 
     @JsonProperty("setores")
-    val setores: MutableSet<String>,
+    val setores: Set<String>,
 
     @JsonProperty("site")
     val site: String?
-) {
-    fun addSetor(setor: String) {
-        this.setores.add(setor)
-    }
-}
+)

@@ -5,5 +5,5 @@ import java.net.URL
 data class CompanyResume(
     val name: String,
     val cvm: String,
-    val detailUrl: URL
+    val detailUrl: String
 )
