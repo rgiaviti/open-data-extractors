@@ -33,7 +33,7 @@ abstract class Extractor {
         do {
             try {
                 attempt++
-                log.info("Tentativa -> {}", attempt)
+
                 return Jsoup.connect(url)
                     .userAgent(userAgent)
                     .timeout(timeout)
@@ -41,11 +41,12 @@ abstract class Extractor {
                     .followRedirects(true)
                     .get()
             } catch (e: SocketTimeoutException) {
-                log.error("Timeout")
+                log.error("Houve um timeout.")
             }
-        } while (attempt <= maxTries)
+        } while (attempt < maxTries)
 
         log.error("Máximo de tentativas atingido para -> {}", url)
+        log.error("Tentativas: {}/{}", attempt, maxTries)
         log.error("Interrompendo a execução")
         throw SocketTimeoutException()
     }
