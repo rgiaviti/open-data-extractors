@@ -31,12 +31,12 @@ object CompanyResumeExtractor : Extractor() {
      */
     fun extractResumes(): List<CompanyResume> {
         val companiesListUrlByLetter = this.companiesListByLetter();
-        val timeBetweenLetters = getConfig(TIME_BETWEEN_LETTERS).toLong()
         val companies = mutableListOf<CompanyResume>()
+        val timeBetweenRequests = timeBetweenRequests()
 
-        companiesListUrlByLetter.stream().forEach { url ->
-            log.info("Parsing --> {}", url)
-            Thread.sleep(timeBetweenLetters)
+        companiesListUrlByLetter.parallelStream().forEach { url ->
+            log.info("Parsing -> {}", url)
+            Thread.sleep(randomDelay(timeBetweenRequests))
             companies.addAll(parseCompanyList(url))
         }
 
@@ -72,5 +72,9 @@ object CompanyResumeExtractor : Extractor() {
         val resumeUrl = getConfig(COMPANIES_RESUME_URL)
         letters.forEach { letter -> urlList.add(resumeUrl + letter) }
         return urlList
+    }
+
+    private fun timeBetweenRequests(): Long {
+        return getConfig(TIME_BETWEEN_LETTERS).toLong()
     }
 }

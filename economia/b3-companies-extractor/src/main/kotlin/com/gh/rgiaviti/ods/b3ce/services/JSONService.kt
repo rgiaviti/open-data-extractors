@@ -21,8 +21,8 @@ object JSONService {
         return toJson(CompanyList(metainfo, companies))
     }
 
-    fun toJson(companies: CompanyList): String {
-        return mapper.writeValueAsString(companies)
+    private fun toJson(obj: Any): String {
+        return mapper.writeValueAsString(obj)
     }
 
     private fun enableModules() {

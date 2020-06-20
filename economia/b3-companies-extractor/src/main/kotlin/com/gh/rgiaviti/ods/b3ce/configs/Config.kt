@@ -17,7 +17,8 @@ object Config {
         JSON_FILE_OUT("json-file-out"),
         METAINFO_VERSION("metainfo-version"),
         METAINFO_SITE("metainfo-site"),
-        METAINFO_FONTES("metainfo-fontes");
+        METAINFO_FONTES("metainfo-fontes"),
+        MAX_TRIES_REQUEST("max-tries-in-case-timeout");
 
         override fun toString(): String {
             return key;

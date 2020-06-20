@@ -7,7 +7,6 @@ import com.gh.rgiaviti.ods.b3ce.extractors.dtos.CompanyResume
 import org.jsoup.nodes.Document
 import org.slf4j.LoggerFactory
 import java.util.stream.Collectors
-import kotlin.random.Random.Default.nextLong
 
 
 object CompanyDetailExtractor : Extractor() {
@@ -17,7 +16,6 @@ object CompanyDetailExtractor : Extractor() {
     //--------------------------------------------------
     private val log = LoggerFactory.getLogger(javaClass)
 
-    private const val SEED_DELAY = 2000L
     private const val SECTOR_DELIMITER = '/'
     private const val NO_SECTORS = "NÃO HÁ SETORES LISTADOS"
     private val REGEX_TICKER = "^[a-zA-Z]{4}\\d{1,2}\$".toRegex()
@@ -45,12 +43,14 @@ object CompanyDetailExtractor : Extractor() {
      */
     fun extractDetails(resumes: List<CompanyResume>): List<Company> {
         val companies = mutableListOf<Company>()
+        val timeBetweenRequests = timeBetweenRequests()
 
         resumes.parallelStream().forEach { resume ->
-            Thread.sleep(randomDelay())
-            log.info("Extracting Details --> {}", resume.name)
+            Thread.sleep(randomDelay(timeBetweenRequests))
+            log.info("Extracting Details -> {}", resume.name)
             val html = this.html(resume.detailUrl)
-            val c = Company(
+
+            val company = Company(
                 resume.name,
                 resume.cvm,
                 tickers(html),
@@ -60,7 +60,8 @@ object CompanyDetailExtractor : Extractor() {
                 setores(html),
                 site(html)
             )
-            companies.add(c)
+
+            companies.add(company)
         }
 
         companies.sortBy { company -> company.nome }
@@ -103,7 +104,10 @@ object CompanyDetailExtractor : Extractor() {
         return if (arrSectors.isEmpty()) {
             setOf(NO_SECTORS)
         } else {
-            arrSectors.stream().map { t -> t.trim().toUpperCase() }.collect(Collectors.toSet())
+            arrSectors.stream()
+                .map { t -> t.trim().toUpperCase() }
+                .collect(Collectors.toSet())
+                .toSortedSet()
         }
     }
 
@@ -122,14 +126,11 @@ object CompanyDetailExtractor : Extractor() {
                 .map { ticker -> ticker.trim().toUpperCase() }
                 .filter { ticker -> ticker.matches(REGEX_TICKER) }
                 .collect(Collectors.toSet())
+                .toSortedSet()
         }
     }
 
-    /**
-     * Gera um tempo aleatório baseado no na configuração de delay que está nos properties. Isso
-     * é para não sobrecarregar de requests a página da B3.
-     */
-    private fun randomDelay(): Long {
-        return nextLong(getConfig(TIME_BETWEEN_DETAILS).toLong(), SEED_DELAY)
+    private fun timeBetweenRequests(): Long {
+        return getConfig(TIME_BETWEEN_DETAILS).toLong()
     }
 }
