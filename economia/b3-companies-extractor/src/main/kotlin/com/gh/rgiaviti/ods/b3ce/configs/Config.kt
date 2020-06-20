@@ -1,5 +1,6 @@
 package com.gh.rgiaviti.ods.b3ce.configs
 
+import java.io.InputStreamReader
 import java.util.*
 
 object Config {
@@ -25,10 +26,11 @@ object Config {
         }
     }
 
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     private val configs: Properties
         get() {
             javaClass.classLoader.getResourceAsStream(PROPERTIES_FILE).use {
-                return Properties().apply { load(it) }
+                return Properties().apply { load(InputStreamReader(it, Charsets.UTF_8)) }
             }
         }
 

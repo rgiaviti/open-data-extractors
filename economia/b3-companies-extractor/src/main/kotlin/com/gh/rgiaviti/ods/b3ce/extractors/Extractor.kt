@@ -26,7 +26,6 @@ abstract class Extractor {
     protected fun html(url: String): Document {
         val userAgent = Config.getConfig(Config.Key.BROWSER_USER_AGENT)
         val timeout = Config.getConfig(Config.Key.CONNECTION_TIMEOUT).toInt()
-
         val maxTries = Config.getConfig(Config.Key.MAX_TRIES_REQUEST).toInt()
         var attempt = 0
 
@@ -40,14 +39,16 @@ abstract class Extractor {
                     .ignoreHttpErrors(false)
                     .followRedirects(true)
                     .get()
+
             } catch (e: SocketTimeoutException) {
-                log.error("Houve um timeout.")
+                log.warn("Houve um timeout.")
             }
         } while (attempt < maxTries)
 
         log.error("Máximo de tentativas atingido para -> {}", url)
         log.error("Tentativas: {}/{}", attempt, maxTries)
         log.error("Interrompendo a execução")
+
         throw SocketTimeoutException()
     }
 
