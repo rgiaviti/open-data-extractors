@@ -1,5 +1,5 @@
-# open-data-scripts
-Scripts de extração de informações para o projeto do Open Data
+# Open Data Scripts / Apps
+Scripts e projetos de extração de informações para o projeto do Open Data
 
 ## O Projeto Open Data
 O projeto [Open Data](https://github.com/rgiaviti/open-data) um projetinho pessoal onde disponibilizo informações de domínio público em JSON. As informações disponibilizadas geralmente se encontram em arquivos, planilhas, documentos HTML e outros formatos.
