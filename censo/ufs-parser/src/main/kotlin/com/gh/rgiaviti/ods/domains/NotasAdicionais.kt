@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class NotasAdicionais(
 
-    @JsonProperty("nota-populacional")
-    val notaPopulacional: String,
+        @JsonProperty("nota-populacional")
+        val notaPopulacional: String,
 
-    @JsonProperty("mensagens")
-    val mensagens: List<String>
+        @JsonProperty("mensagens")
+        val mensagens: List<String>
 )

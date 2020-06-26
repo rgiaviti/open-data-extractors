@@ -6,27 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class UnidadeFederativa(
 
-    @JsonProperty("unidade-federativa")
-    val unidadeFerativa: String,
+        @JsonProperty("unidade-federativa")
+        val unidadeFerativa: String,
 
-    @JsonProperty("abreviacao")
-    val abreviacao: String,
+        @JsonProperty("abreviacao")
+        val abreviacao: String,
 
-    @JsonProperty("sede")
-    val sede: String,
+        @JsonProperty("sede")
+        val sede: String,
 
-    @JsonProperty("gentilico")
-    val gentilico: String,
+        @JsonProperty("gentilico")
+        val gentilico: String,
 
-    @JsonProperty("regiao")
-    val regiao: String,
+        @JsonProperty("regiao")
+        val regiao: String,
 
-    @JsonProperty("populacao-estimada")
-    val populacaoEstimada: Int,
+        @JsonProperty("populacao-estimada")
+        val populacaoEstimada: Int,
 
-    @JsonProperty("area")
-    val area: Float,
+        @JsonProperty("area")
+        val area: Float,
 
-    @JsonProperty("notas-adicionais")
-    val notasAdicionais: NotasAdicionais
+        @JsonProperty("notas-adicionais")
+        val notasAdicionais: NotasAdicionais
 )
