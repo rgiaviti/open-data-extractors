@@ -1,9 +1,9 @@
-package com.gh.rgiaviti.ods.b3ce.configs
+package com.gh.rgiaviti.ods.b3ce.services
 
 import java.io.InputStreamReader
 import java.util.*
 
-object Config {
+object ConfigService {
 
     private const val PROPERTIES_FILE = "configs.properties"
 
@@ -35,6 +35,6 @@ object Config {
         }
 
     fun getConfig(key: Key): String {
-        return this.configs.getProperty(key.toString())
+        return configs.getProperty(key.toString())
     }
 }

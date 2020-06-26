@@ -1,8 +1,8 @@
 package com.gh.rgiaviti.ods.b3ce.services
 
-import com.gh.rgiaviti.ods.b3ce.configs.Config.Key.*
-import com.gh.rgiaviti.ods.b3ce.configs.Config.getConfig
 import com.gh.rgiaviti.ods.b3ce.domains.MetaInfo
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService.Key.*
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService.getConfig
 import java.time.LocalDate
 
 object MetaInfoService {
@@ -12,11 +12,11 @@ object MetaInfoService {
 
     fun metaInfo(): MetaInfo {
         return MetaInfo(
-            STATUS,
-            LocalDate.now(),
-            version(),
-            site(),
-            fontes()
+                STATUS,
+                LocalDate.now(),
+                version(),
+                site(),
+                fontes()
         )
     }
 

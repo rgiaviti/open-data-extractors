@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class CompanyList(
 
-    @JsonProperty("meta-info")
-    val metaInfo: MetaInfo,
+        @JsonProperty("meta-info")
+        val metaInfo: MetaInfo,
 
-    @JsonProperty("company")
-    val companies: List<Company>
+        @JsonProperty("company")
+        val companies: List<Company>
 )

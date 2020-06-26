@@ -1,6 +1,6 @@
 package com.gh.rgiaviti.ods.b3ce.extractors
 
-import com.gh.rgiaviti.ods.b3ce.configs.Config
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.slf4j.LoggerFactory
@@ -24,9 +24,9 @@ abstract class Extractor {
      * @return documento html para parsing
      */
     protected fun html(url: String): Document {
-        val userAgent = Config.getConfig(Config.Key.BROWSER_USER_AGENT)
-        val timeout = Config.getConfig(Config.Key.CONNECTION_TIMEOUT).toInt()
-        val maxTries = Config.getConfig(Config.Key.MAX_TRIES_REQUEST).toInt()
+        val userAgent = ConfigService.getConfig(ConfigService.Key.BROWSER_USER_AGENT)
+        val timeout = ConfigService.getConfig(ConfigService.Key.CONNECTION_TIMEOUT).toInt()
+        val maxTries = ConfigService.getConfig(ConfigService.Key.MAX_TRIES_REQUEST).toInt()
         var attempt = 0
 
         do {
@@ -34,11 +34,11 @@ abstract class Extractor {
                 attempt++
 
                 return Jsoup.connect(url)
-                    .userAgent(userAgent)
-                    .timeout(timeout)
-                    .ignoreHttpErrors(false)
-                    .followRedirects(true)
-                    .get()
+                        .userAgent(userAgent)
+                        .timeout(timeout)
+                        .ignoreHttpErrors(false)
+                        .followRedirects(true)
+                        .get()
 
             } catch (e: SocketTimeoutException) {
                 log.warn("Houve um timeout.")

@@ -6,27 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class Company(
 
-    @JsonProperty("nome")
-    val nome: String,
+        @JsonProperty("nome")
+        val nome: String,
 
-    @JsonProperty("codigo-cvm")
-    val cvm: String,
+        @JsonProperty("codigo-cvm")
+        val cvm: String,
 
-    @JsonProperty("tickers")
-    val tickers: Set<String>,
+        @JsonProperty("tickers")
+        val tickers: Set<String>,
 
-    @JsonProperty("nome-pregao")
-    val nomePregao: String,
+        @JsonProperty("nome-pregao")
+        val nomePregao: String,
 
-    @JsonProperty("cnpj")
-    val cnpj: String,
+        @JsonProperty("cnpj")
+        val cnpj: String,
 
-    @JsonProperty("ramo-atividade")
-    val atividade: String,
+        @JsonProperty("ramo-atividade")
+        val atividade: String,
 
-    @JsonProperty("setores")
-    val setores: Set<String>,
+        @JsonProperty("setores")
+        val setores: Set<String>,
 
-    @JsonProperty("site")
-    val site: String?
+        @JsonProperty("site")
+        val site: String?
 )

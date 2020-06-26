@@ -8,19 +8,19 @@ import java.time.LocalDate
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class MetaInfo(
 
-    @JsonProperty("status")
-    val status: String,
+        @JsonProperty("status")
+        val status: String,
 
-    @JsonProperty("data-ultima-atualizacao")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    val dataUltimaAtualizacao: LocalDate,
+        @JsonProperty("data-ultima-atualizacao")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+        val dataUltimaAtualizacao: LocalDate,
 
-    @JsonProperty("versao")
-    val versao: String,
+        @JsonProperty("versao")
+        val versao: String,
 
-    @JsonProperty("site")
-    val website: String,
+        @JsonProperty("site")
+        val website: String,
 
-    @JsonProperty("fontes")
-    val fontes: List<String>
+        @JsonProperty("fontes")
+        val fontes: List<String>
 )

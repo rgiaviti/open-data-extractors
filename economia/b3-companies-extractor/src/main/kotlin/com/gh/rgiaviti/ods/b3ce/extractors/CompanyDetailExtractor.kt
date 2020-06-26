@@ -1,9 +1,9 @@
 package com.gh.rgiaviti.ods.b3ce.extractors
 
-import com.gh.rgiaviti.ods.b3ce.configs.Config.Key.TIME_BETWEEN_DETAILS
-import com.gh.rgiaviti.ods.b3ce.configs.Config.getConfig
 import com.gh.rgiaviti.ods.b3ce.domains.Company
 import com.gh.rgiaviti.ods.b3ce.extractors.dtos.CompanyResume
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService.Key.TIME_BETWEEN_DETAILS
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService.getConfig
 import org.jsoup.nodes.Document
 import org.slf4j.LoggerFactory
 import java.util.stream.Collectors
@@ -51,14 +51,14 @@ object CompanyDetailExtractor : Extractor() {
             val html = this.html(resume.detailUrl)
 
             val company = Company(
-                resume.name,
-                resume.cvm,
-                tickers(html),
-                nomePregao(html),
-                cnpj(html),
-                atividade(html),
-                setores(html),
-                site(html)
+                    resume.name,
+                    resume.cvm,
+                    tickers(html),
+                    nomePregao(html),
+                    cnpj(html),
+                    atividade(html),
+                    setores(html),
+                    site(html)
             )
 
             companies.add(company)
@@ -105,9 +105,9 @@ object CompanyDetailExtractor : Extractor() {
             setOf(NO_SECTORS)
         } else {
             arrSectors.stream()
-                .map { t -> t.trim().toUpperCase() }
-                .collect(Collectors.toSet())
-                .toSortedSet()
+                    .map { t -> t.trim().toUpperCase() }
+                    .collect(Collectors.toSet())
+                    .toSortedSet()
         }
     }
 
@@ -123,10 +123,10 @@ object CompanyDetailExtractor : Extractor() {
             setOf(NO_TICKERS)
         } else {
             arrTickers.stream()
-                .map { ticker -> ticker.trim().toUpperCase() }
-                .filter { ticker -> ticker.matches(REGEX_TICKER) }
-                .collect(Collectors.toSet())
-                .toSortedSet()
+                    .map { ticker -> ticker.trim().toUpperCase() }
+                    .filter { ticker -> ticker.matches(REGEX_TICKER) }
+                    .collect(Collectors.toSet())
+                    .toSortedSet()
         }
     }
 

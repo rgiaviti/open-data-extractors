@@ -1,8 +1,8 @@
 package com.gh.rgiaviti.ods.b3ce.extractors
 
-import com.gh.rgiaviti.ods.b3ce.configs.Config.Key.*
-import com.gh.rgiaviti.ods.b3ce.configs.Config.getConfig
 import com.gh.rgiaviti.ods.b3ce.extractors.dtos.CompanyResume
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService.Key.*
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService.getConfig
 import org.slf4j.LoggerFactory
 
 object CompanyResumeExtractor : Extractor() {
