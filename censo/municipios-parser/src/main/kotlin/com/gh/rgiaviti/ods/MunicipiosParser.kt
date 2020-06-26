@@ -10,8 +10,8 @@ object MunicipiosParser {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val municipios = CSVService.parse()
-        val metaInfo = MetaInfoService.metaInfo()
+        val municipios = CSVService.parse().sortedBy { it.nome }
+        val metaInfo = MetaInfoService.metaInfo(municipios.size)
         val json = JSONService.toJSON(OpenDataMunicipio(metaInfo, municipios))
         FileOutService.save(json)
     }
