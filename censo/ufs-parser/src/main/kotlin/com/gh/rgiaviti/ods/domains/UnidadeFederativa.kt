@@ -9,6 +9,9 @@ data class UnidadeFederativa(
         @JsonProperty("unidade-federativa")
         val unidadeFerativa: String,
 
+        @JsonProperty("codigo-ibge")
+        val codigoIBGE: String,
+
         @JsonProperty("abreviacao")
         val abreviacao: String,
 

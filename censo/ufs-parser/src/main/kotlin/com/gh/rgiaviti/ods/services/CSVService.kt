@@ -12,6 +12,7 @@ object CSVService {
 
     private const val UF_HEADER = "UF"
     private const val SIGLA_HEADER = "Sigla"
+    private const val CODIGO_IBGE_HEADER = "Código IBGE"
     private const val SEDE_HEADER = "Sede"
     private const val GENTILICO_HEADER = "Gentílico"
     private const val POPULACAO_HEADER = "População"
@@ -45,6 +46,7 @@ object CSVService {
 
         return UnidadeFederativa(
                 record.get(UF_HEADER),
+                record.get(CODIGO_IBGE_HEADER),
                 record.get(SIGLA_HEADER),
                 record.get(SEDE_HEADER),
                 record.get(GENTILICO_HEADER),
@@ -64,6 +66,7 @@ object CSVService {
                 .withHeader(
                         UF_HEADER,
                         SIGLA_HEADER,
+                        CODIGO_IBGE_HEADER,
                         SEDE_HEADER,
                         GENTILICO_HEADER,
                         POPULACAO_HEADER,
