@@ -1,6 +1,8 @@
 package com.gh.rgiaviti.ods.b3ce.extractors
 
 import com.gh.rgiaviti.ods.b3ce.services.ConfigService
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService.ExecutionMode
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService.Key.EXECUTION_MODE
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.slf4j.LoggerFactory
@@ -58,5 +60,9 @@ abstract class Extractor {
      */
     protected fun randomDelay(time: Long): Long {
         return Random.nextLong(time, time + seedDelay)
+    }
+
+    protected fun executionMode(): ExecutionMode {
+        return ExecutionMode.fromString(ConfigService.getConfig(EXECUTION_MODE))
     }
 }

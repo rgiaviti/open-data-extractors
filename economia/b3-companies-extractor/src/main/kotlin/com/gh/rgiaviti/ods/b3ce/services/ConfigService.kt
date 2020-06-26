@@ -7,7 +7,21 @@ object ConfigService {
 
     private const val PROPERTIES_FILE = "configs.properties"
 
+
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+    private val configs: Properties
+        get() {
+            javaClass.classLoader.getResourceAsStream(PROPERTIES_FILE).use {
+                return Properties().apply { load(InputStreamReader(it, Charsets.UTF_8)) }
+            }
+        }
+
+    fun getConfig(key: Key): String {
+        return configs.getProperty(key.toString())
+    }
+
     enum class Key(private val key: String) {
+        EXECUTION_MODE("execution-mode"),
         START_LETTERS("start-letters"),
         COMPANIES_RESUME_URL("companies-resume-url"),
         COMPANY_DETAIL_URL("company-details-url"),
@@ -26,15 +40,24 @@ object ConfigService {
         }
     }
 
-    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-    private val configs: Properties
-        get() {
-            javaClass.classLoader.getResourceAsStream(PROPERTIES_FILE).use {
-                return Properties().apply { load(InputStreamReader(it, Charsets.UTF_8)) }
+    enum class ExecutionMode(private val execution: String) {
+        PARALLEL("parallel"),
+        SEQUENTIAL("sequential");
+
+        companion object {
+            fun fromString(param: String): ExecutionMode {
+                values().forEach { em ->
+                    if (em.execution.equals(param, true)) {
+                        return em
+                    }
+                }
+
+                throw IllegalArgumentException("execution not recognized")
             }
         }
 
-    fun getConfig(key: Key): String {
-        return configs.getProperty(key.toString())
+        override fun toString(): String {
+            return execution;
+        }
     }
 }

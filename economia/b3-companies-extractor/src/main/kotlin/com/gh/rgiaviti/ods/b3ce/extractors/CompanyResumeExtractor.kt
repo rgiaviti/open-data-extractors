@@ -1,9 +1,11 @@
 package com.gh.rgiaviti.ods.b3ce.extractors
 
 import com.gh.rgiaviti.ods.b3ce.extractors.dtos.CompanyResume
+import com.gh.rgiaviti.ods.b3ce.services.ConfigService
 import com.gh.rgiaviti.ods.b3ce.services.ConfigService.Key.*
 import com.gh.rgiaviti.ods.b3ce.services.ConfigService.getConfig
 import org.slf4j.LoggerFactory
+import java.util.stream.Stream
 
 object CompanyResumeExtractor : Extractor() {
 
@@ -34,7 +36,12 @@ object CompanyResumeExtractor : Extractor() {
         val companies = mutableListOf<CompanyResume>()
         val timeBetweenRequests = timeBetweenRequests()
 
-        companiesListUrlByLetter.parallelStream().forEach { url ->
+        val letterStream = when (executionMode()) {
+            ConfigService.ExecutionMode.PARALLEL -> companiesListUrlByLetter.parallelStream()
+            ConfigService.ExecutionMode.SEQUENTIAL -> companiesListUrlByLetter.stream()
+        }
+
+        letterStream.forEach { url ->
             log.info("Parsing -> {}", url)
             Thread.sleep(randomDelay(timeBetweenRequests))
             companies.addAll(parseCompanyList(url))
