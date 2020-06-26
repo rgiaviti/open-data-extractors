@@ -52,7 +52,7 @@ object ConfigService {
                     }
                 }
 
-                throw IllegalArgumentException("execution not recognized")
+                throw IllegalArgumentException("execution mode not recognized")
             }
         }
 

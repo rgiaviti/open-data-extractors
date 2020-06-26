@@ -18,7 +18,7 @@ object CompanyDetailExtractor : Extractor() {
 
     private const val SECTOR_DELIMITER = '/'
     private const val NO_SECTORS = "NÃO HÁ SETORES LISTADOS"
-    private val REGEX_TICKER = "^[a-zA-Z]{4}\\d{1,2}\$".toRegex()
+    private val REGEX_TICKER = "^[a-zA-Z0-9]{4}\\d{1,2}\$".toRegex()
     private const val TICKER_DELIMITER = " "
     private const val NO_TICKERS = "TICKERS NÃO MAPEADOS"
 
