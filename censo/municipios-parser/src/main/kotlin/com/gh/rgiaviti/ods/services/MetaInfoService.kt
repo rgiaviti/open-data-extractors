@@ -9,13 +9,13 @@ object MetaInfoService {
 
     private const val STATUS = "ATIVO"
 
-    fun metaInfo(qtdMunicipios: Int): MetaInfo {
+    fun metaInfo(contagem: Int): MetaInfo {
         return MetaInfo(
                 STATUS,
                 LocalDate.now(),
                 dataReferencia(),
                 version(),
-                qtdMunicipios,
+                contagem,
                 site(),
                 fontes()
         )

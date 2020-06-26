@@ -11,7 +11,7 @@ object UFSParser {
     @JvmStatic
     fun main(args: Array<String>) {
         val ufs = CSVService.parse()
-        val metaInfo = MetaInfoService.metaInfo()
+        val metaInfo = MetaInfoService.metaInfo(ufs.size)
         val json = JSONService.toJSON(OpenDataUF(metaInfo, ufs))
         FileOutService.save(json)
     }

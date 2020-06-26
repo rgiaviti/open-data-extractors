@@ -10,11 +10,12 @@ object MetaInfoService {
     private const val FONTES_DELIMITER = ";"
     private const val STATUS = "ATIVO"
 
-    fun metaInfo(): MetaInfo {
+    fun metaInfo(contagem: Int): MetaInfo {
         return MetaInfo(
                 STATUS,
                 LocalDate.now(),
                 version(),
+                contagem,
                 site(),
                 fontes()
         )

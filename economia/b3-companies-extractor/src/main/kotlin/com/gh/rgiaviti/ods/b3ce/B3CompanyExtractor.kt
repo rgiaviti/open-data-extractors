@@ -12,7 +12,7 @@ object B3CompanyExtractor {
     fun main(args: Array<String>) {
         val resumes = CompanyResumeExtractor.extractResumes()
         val companies = CompanyDetailExtractor.extractDetails(resumes)
-        val metaInfo = MetaInfoService.metaInfo()
+        val metaInfo = MetaInfoService.metaInfo(companies.size)
         val json = JSONService.toJson(metaInfo, companies)
         FileOutService.save(json)
     }

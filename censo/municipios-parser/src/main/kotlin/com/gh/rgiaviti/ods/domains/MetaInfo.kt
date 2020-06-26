@@ -22,8 +22,8 @@ data class MetaInfo(
         @JsonProperty("versao")
         val versao: String,
 
-        @JsonProperty("quantidade-municipios")
-        val quantidade: Int,
+        @JsonProperty("contagem")
+        val contagem: Int,
 
         @JsonProperty("site")
         val website: String,
