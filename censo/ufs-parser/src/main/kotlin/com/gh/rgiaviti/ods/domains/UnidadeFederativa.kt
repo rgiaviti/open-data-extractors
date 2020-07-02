@@ -12,8 +12,8 @@ data class UnidadeFederativa(
         @JsonProperty("codigo-ibge")
         val codigoIBGE: String,
 
-        @JsonProperty("abreviacao")
-        val abreviacao: String,
+        @JsonProperty("sigla")
+        val sigla: String,
 
         @JsonProperty("sede")
         val sede: String,
