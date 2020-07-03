@@ -9,6 +9,6 @@ data class OpenDataMunicipio(
         @JsonProperty("meta-info")
         val metaInfo: MetaInfo,
 
-        @JsonProperty("unidades-federativas")
+        @JsonProperty("municipios")
         val unidadesFederativas: List<Municipio>
 )
