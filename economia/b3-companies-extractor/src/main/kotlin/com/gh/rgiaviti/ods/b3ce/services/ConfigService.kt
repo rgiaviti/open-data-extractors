@@ -36,7 +36,7 @@ object ConfigService {
         MAX_TRIES_REQUEST("max-tries-in-case-timeout");
 
         override fun toString(): String {
-            return key;
+            return key
         }
     }
 
@@ -57,7 +57,7 @@ object ConfigService {
         }
 
         override fun toString(): String {
-            return execution;
+            return execution
         }
     }
 }

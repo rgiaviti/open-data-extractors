@@ -5,7 +5,6 @@ import com.gh.rgiaviti.ods.b3ce.services.ConfigService
 import com.gh.rgiaviti.ods.b3ce.services.ConfigService.Key.*
 import com.gh.rgiaviti.ods.b3ce.services.ConfigService.getConfig
 import org.slf4j.LoggerFactory
-import java.util.stream.Stream
 
 object CompanyResumeExtractor : Extractor() {
 
@@ -32,7 +31,7 @@ object CompanyResumeExtractor : Extractor() {
      * @return lista com o resumo das empresas
      */
     fun extractResumes(): List<CompanyResume> {
-        val companiesListUrlByLetter = this.companiesListByLetter();
+        val companiesListUrlByLetter = this.companiesListByLetter()
         val companies = mutableListOf<CompanyResume>()
         val timeBetweenRequests = timeBetweenRequests()
 
@@ -61,7 +60,7 @@ object CompanyResumeExtractor : Extractor() {
         val detailBaseUrl = getConfig(COMPANY_DETAIL_URL)
 
         this.html(url).select(SELECT_TABLE).forEach { element ->
-            val name = element.select("td")[0].text();
+            val name = element.select("td")[0].text()
             val cvm = element.select("td > a").attr("href").split('=')[1].trim()
             companiesResume.add(CompanyResume(name, cvm, detailBaseUrl + cvm))
         }
