@@ -7,6 +7,7 @@ import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVRecord
 import java.io.File
 import java.io.FileReader
+import kotlin.system.exitProcess
 
 object CSVService {
 
@@ -19,7 +20,7 @@ object CSVService {
 
     fun parse(): List<Municipio> {
         val csvFile = File(ConfigService.getConfig(CSV_FILE_IN))
-
+        println("Fazendo parse do arquivo CSV: ${csvFile.absolutePath}")
         checkCSV(csvFile)
 
         val municipios = mutableListOf<Municipio>()
@@ -41,14 +42,21 @@ object CSVService {
                 emptyList()
         )
 
-        return Municipio(
-                record.get(SIGLA_UF_HEADER),
-                record.get(CODIGO_IBGE_UF_HEADER),
-                record.get(CODIGO_IBGE_MUNICIPIO_HEADER),
-                record.get(NOME_HEADER),
-                record.get(POPULACAO_ESTIMADA_HEADER).toInt(),
-                notasAdicionais
-        )
+        try {
+            return Municipio(
+                    record.get(SIGLA_UF_HEADER),
+                    record.get(CODIGO_IBGE_UF_HEADER),
+                    record.get(CODIGO_IBGE_MUNICIPIO_HEADER),
+                    record.get(NOME_HEADER),
+                    record.get(POPULACAO_ESTIMADA_HEADER).toInt(),
+                    notasAdicionais
+            )
+        } catch (ex: NumberFormatException) {
+            println("Erro na conversão da população para número do Municio: ${record.get(NOME_HEADER)} - ${record.get(SIGLA_UF_HEADER)}")
+            println("População: ${record.get(POPULACAO_ESTIMADA_HEADER)}")
+            ex.printStackTrace()
+            exitProcess(1)
+        }
     }
 
     private fun getCSVFormat(): CSVFormat {
