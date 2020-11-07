@@ -28,7 +28,7 @@ data class UnidadeFederativa(
         val populacaoEstimada: Int,
 
         @JsonProperty("area")
-        val area: Float,
+        val area: Int,
 
         @JsonProperty("notas-adicionais")
         val notasAdicionais: NotasAdicionais

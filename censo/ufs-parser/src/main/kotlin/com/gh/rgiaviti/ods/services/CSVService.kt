@@ -52,7 +52,7 @@ object CSVService {
                 record.get(GENTILICO_HEADER),
                 record.get(REGIAO_HEADER),
                 record.get(POPULACAO_HEADER).toInt(),
-                record.get(AREA_HEADER).toFloat(),
+                record.get(AREA_HEADER).toInt(),
                 notasAdicionais
         )
     }
