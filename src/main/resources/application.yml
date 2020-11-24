@@ -22,4 +22,29 @@ app:
       metainfos:
         site: "https://github.com/rgiaviti/open-data/blob/master/economia/b3/empresas-listadas.json"
         fontes: "B3 - Brasil, Bolsa, Balcão"
+    fiis-b3:
+      metainfos:
+        site: "https://github.com/rgiaviti/open-data/blob/master/economia/b3/fundos-imobiliarios.json"
+        fontes: "B3 - Brasil, Bolsa, Balcão"
+    bacen:
+      ipca:
+        metainfos:
+          fontes: "IBGE, Banco Central do Brasil"
+          site: "https://github.com/rgiaviti/open-data/blob/master/economia/inflacao/ipca.json"
+      inpc:
+        metainfos:
+          fontes: "IBGE, Banco Central do Brasil"
+          site: "https://github.com/rgiaviti/open-data/blob/master/economia/inflacao/inpc.json"
+      igpm:
+        metainfos:
+          fontes: "FGV, Banco Central do Brasil"
+          site: "https://github.com/rgiaviti/open-data/blob/master/economia/inflacao/igpm.json"
+      selic:
+        metainfos:
+          fontes: "COPOM, Banco Central do Brasil"
+          site: "https://github.com/rgiaviti/open-data/blob/master/economia/juros/selic.json"
+      cdi:
+        metainfos:
+          fontes: "CETIP, Banco Central do Brasil"
+          site: "https://github.com/rgiaviti/open-data/blob/master/economia/juros/cdi.json"
 

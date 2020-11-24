@@ -39,6 +39,54 @@
     {
       "name": "app.configs.empresas-b3.metainfos.fontes",
       "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.fiis-b3.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.fiis-b3.metainfos.fontes",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.ipca.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.ipca.metainfos.fontes",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.inpc.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.inpc.metainfos.fontes",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.igpm.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.igpm.metainfos.fontes",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.selic.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.selic.metainfos.fontes",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.cdi.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.cdi.metainfos.fontes",
+      "type": "java.lang.String"
     }
   ],
   "hints": [
