@@ -1,5 +1,47 @@
 {
   "properties": [
+    {
+      "name": "app.configs.comum.dir-saida-arquivos",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.comum.metainfos.versao",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.municipios.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.municipios.metainfos.fontes",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.municipios.metainfos.data-referencia",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.ufs.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.ufs.metainfos.fontes",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.ufs.metainfos.data-referencia",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.empresas-b3.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.empresas-b3.metainfos.fontes",
+      "type": "java.lang.String"
+    }
+  ],
+  "hints": [
 
   ]
 }
