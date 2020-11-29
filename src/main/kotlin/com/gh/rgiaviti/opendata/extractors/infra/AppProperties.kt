@@ -1,4 +1,4 @@
-package com.gh.rgiaviti.opendata.extractors.core
+package com.gh.rgiaviti.opendata.extractors.infra
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component

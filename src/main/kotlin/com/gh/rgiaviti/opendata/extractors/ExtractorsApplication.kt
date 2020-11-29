@@ -1,5 +1,6 @@
 package com.gh.rgiaviti.opendata.extractors
 
+import com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.restclient.B3FiiClient
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -7,5 +8,6 @@ import org.springframework.boot.runApplication
 class ExtractorsApplication
 
 fun main(args: Array<String>) {
-	runApplication<ExtractorsApplication>(*args)
+	val runApplication = runApplication<ExtractorsApplication>(*args)
+	runApplication.getBean(B3FiiClient::class.java).listarFundosImobiliarios()
 }
