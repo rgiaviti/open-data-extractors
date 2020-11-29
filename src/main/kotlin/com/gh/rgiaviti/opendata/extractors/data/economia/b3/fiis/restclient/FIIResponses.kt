@@ -46,6 +46,13 @@ data class FundoImobiliarioResumoRes(
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+data class GetFundoImobiliarioDetalheRes(
+
+        @field: JsonProperty("detailFund")
+        val detalhes: FundoImobiliarioDetalheRes?
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class FundoImobiliarioDetalheRes(
 
         @field: JsonProperty("tradingCode")
