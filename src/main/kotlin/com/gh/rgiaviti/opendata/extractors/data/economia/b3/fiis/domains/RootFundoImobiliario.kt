@@ -6,6 +6,7 @@ import com.gh.rgiaviti.opendata.extractors.common.domains.MetaInfo
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class RootFundoImobiliario(
+        
         @field: JsonProperty("meta-info")
         val metaInfo: MetaInfo,
 

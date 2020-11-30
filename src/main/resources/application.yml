@@ -5,7 +5,7 @@ spring:
 app:
   configs:
     comum:
-      dir-saida-arquivos: "/home/out/Desktop/"
+      dir-saida-arquivos: "/home/rgiaviti/Desktop/"
       metainfos:
         versao: "1.1.0-BETA.1"
     municipios:
@@ -21,11 +21,11 @@ app:
     empresas-b3:
       metainfos:
         site: "https://github.com/rgiaviti/open-data/blob/master/economia/b3/empresas-listadas.json"
-        fontes: "B3 - Brasil, Bolsa, Balcão"
+        fontes: "B3 - Brasil Bolsa Balcão"
     fiis-b3:
       metainfos:
-        site: "https://github.com/rgiaviti/open-data/blob/master/economia/b3/fundos-imobiliarios.json"
-        fontes: "B3 - Brasil, Bolsa, Balcão"
+        site: "https://github.com/rgiaviti/open-data/blob/master/economia/b3/fundos-imobiliarios-listados.json"
+        fontes: "B3 - Brasil Bolsa Balcão"
     bacen:
       ipca:
         metainfos:

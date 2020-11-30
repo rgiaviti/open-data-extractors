@@ -19,7 +19,7 @@ class B3FiiRestClient(
 
     companion object {
         private val log by lazy { KotlinLogging.logger {} }
-        const val LISTAR_FII_URL = "https://sistemaswebb3-listados.b3.com.br/fundsProxy/fundsCall/GetListedFundsSIG/eyJ0eXBlRnVuZCI6NywicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjUwMCwia2V5d29yZCI6IiJ9";
+        const val LISTAR_FII_URL = "https://sistemaswebb3-listados.b3.com.br/fundsProxy/fundsCall/GetListedFundsSIG/eyJ0eXBlRnVuZCI6NywicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjUwMCwia2V5d29yZCI6IiJ9"
         const val DETALHAR_FII_URL = "https://sistemaswebb3-listados.b3.com.br/fundsProxy/fundsCall/GetDetailFundSIG/"
         const val DETALHAR_FII_QUERY_PARAM = "{'typeFund':7,'cnpj':'','identifierFund':'[codigo]'}"
     }
@@ -46,19 +46,17 @@ class B3FiiRestClient(
         }
     }
 
-    fun getDetalhe(codigo: String): List<FundoImobiliarioDetalheRes>? {
+    fun getDetalhe(codigo: String): GetFundoImobiliarioDetalheRes {
         val param = DETALHAR_FII_QUERY_PARAM.replace("[codigo]", codigo)
         val paramInBase64 = Base64.getEncoder().encodeToString(param.toByteArray())
 
-        val request = Request.Builder().get().url(DETALHAR_FII_URL + paramInBase64).build()
+        val request = Request.Builder().get().url(url = DETALHAR_FII_URL.plus(paramInBase64)).build()
 
         try {
             val response = this.httpClient.newCall(request).execute()
 
             if (response.isSuccessful && response.body != null) {
-                val detalhe = mapper.readValue(response.body!!.string(), GetFundoImobiliarioDetalheRes::class.java)
-                log.info(detalhe.detalhes!!.cnpj)
-                return null
+                return mapper.readValue(response.body!!.string(), GetFundoImobiliarioDetalheRes::class.java)
             } else {
                 log.error(":: O request foi executado na B3 para obtenção dos detalhes, porém o body é nulo ou status é diferente de 200")
                 log.error(":: FII a detalhar: {}", codigo)

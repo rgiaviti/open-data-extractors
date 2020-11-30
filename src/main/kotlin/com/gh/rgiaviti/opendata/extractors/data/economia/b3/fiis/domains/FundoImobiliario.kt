@@ -12,11 +12,14 @@ data class FundoImobiliario(
         val ticker: String,
 
         @field: JsonProperty("codigos")
-        val codigos: Set<String>,
+        val codigos: List<String> = mutableListOf(),
 
         @field: JsonProperty("nome-pregao")
         val nomePregao: String,
 
         @field: JsonProperty("cnpj")
-        val cnpj: String
+        val cnpj: String,
+
+        @field: JsonProperty("site")
+        val site: String
 )

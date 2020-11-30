@@ -1,4 +1,4 @@
-package com.gh.rgiaviti.opendata.extractors.common.exceptions
+package com.gh.rgiaviti.opendata.extractors.infra.exceptions
 
 import java.lang.Exception
 

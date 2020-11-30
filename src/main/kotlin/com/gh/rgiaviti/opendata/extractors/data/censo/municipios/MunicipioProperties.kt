@@ -10,28 +10,8 @@ data class MunicipioProperties(
         val site: String,
 
         @Value("\${app.configs.municipios.metainfos.fontes}")
-        val fontes: Array<String>,
+        val fontes: List<String>,
 
         @Value("\${app.configs.municipios.metainfos.data-referencia}")
         val dataReferncia: String
-) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as MunicipioProperties
-
-        if (site != other.site) return false
-        if (!fontes.contentEquals(other.fontes)) return false
-        if (dataReferncia != other.dataReferncia) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = site.hashCode()
-        result = 31 * result + fontes.contentHashCode()
-        result = 31 * result + dataReferncia.hashCode()
-        return result
-    }
-}
+)
