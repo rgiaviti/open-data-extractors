@@ -10,5 +10,8 @@ data class AppProperties(
         val dirSaidaArquivos: String,
 
         @Value("\${app.configs.comum.metainfos.versao}")
-        val versao: String
+        val versao: String,
+
+        @Value("\${app.infra.html.user-agent}")
+        val userAgent: String
 )

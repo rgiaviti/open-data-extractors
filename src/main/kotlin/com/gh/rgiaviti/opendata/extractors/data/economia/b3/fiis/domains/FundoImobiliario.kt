@@ -3,8 +3,12 @@ package com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.domains
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 
+/**
+ * Objeto principal onde será serializado o JSON e publicado no projeto open-data.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class FundoImobiliario(
+
         @field: JsonProperty("nome")
         val nome: String,
 

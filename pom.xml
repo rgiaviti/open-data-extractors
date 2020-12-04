@@ -18,6 +18,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>11</java.version>
     <kotlin.version>1.4.10</kotlin.version>
+    <dokka.version>1.4.20</dokka.version>
+    <kotlin.logging.version>2.0.3</kotlin.logging.version>
+    <commons.csv.version>1.8</commons.csv.version>
+    <jsoup.version>1.13.1</jsoup.version>
+    <picocli.version>4.5.2</picocli.version>
   </properties>
 
   <dependencies>
@@ -59,25 +64,30 @@
     <dependency>
       <groupId>io.github.microutils</groupId>
       <artifactId>kotlin-logging-jvm</artifactId>
-      <version>2.0.3</version>
+      <version>${kotlin.logging.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-csv</artifactId>
-      <version>1.8</version>
+      <version>${commons.csv.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
-      <version>1.13.1</version>
+      <version>${jsoup.version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
       <artifactId>okhttp</artifactId>
-      <version>4.9.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>info.picocli</groupId>
+      <artifactId>picocli-spring-boot-starter</artifactId>
+      <version>${picocli.version}</version>
     </dependency>
 
     <dependency>
@@ -107,6 +117,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-plugin</artifactId>
@@ -118,6 +129,7 @@
             <plugin>spring</plugin>
           </compilerPlugins>
         </configuration>
+
         <dependencies>
           <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -126,7 +138,37 @@
           </dependency>
         </dependencies>
       </plugin>
+
+      <plugin>
+        <groupId>org.jetbrains.dokka</groupId>
+        <artifactId>dokka-maven-plugin</artifactId>
+        <version>${dokka.version}</version>
+        <executions>
+          <execution>
+            <phase>pre-site</phase>
+            <goals>
+              <goal>dokka</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <dokkaPlugins>
+            <plugin>
+              <groupId>org.jetbrains.dokka</groupId>
+              <artifactId>kotlin-as-java-plugin</artifactId>
+              <version>${dokka.version}</version>
+            </plugin>
+          </dokkaPlugins>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
+  <pluginRepositories>
+    <pluginRepository>
+      <id>jcenter</id>
+      <name>JCenter</name>
+      <url>https://jcenter.bintray.com/</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>

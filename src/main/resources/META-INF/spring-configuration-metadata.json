@@ -87,6 +87,10 @@
     {
       "name": "app.configs.bacen.cdi.metainfos.fontes",
       "type": "java.lang.String"
+    },
+    {
+      "name": "app.infra.html.user-agent",
+      "type": "java.lang.String"
     }
   ],
   "hints": [

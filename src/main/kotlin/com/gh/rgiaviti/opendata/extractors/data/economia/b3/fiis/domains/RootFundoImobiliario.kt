@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.gh.rgiaviti.opendata.extractors.common.domains.MetaInfo
 
+/**
+ * Objeto principal onde será serializado o JSON e publicado no projeto open-data.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class RootFundoImobiliario(
         
