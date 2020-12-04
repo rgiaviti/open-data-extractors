@@ -1,8 +1,6 @@
 package com.gh.rgiaviti.opendata.extractors
 
 import com.gh.rgiaviti.opendata.extractors.data.economia.b3.empresas.EmpresaService
-import com.gh.rgiaviti.opendata.extractors.data.economia.b3.empresas.htmlclient.B3EmpresaHTMLClient
-import com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.FundoImobiliarioService
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 

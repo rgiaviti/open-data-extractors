@@ -8,9 +8,10 @@
     <version>2.4.0</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
+
   <groupId>com.gh.rgiaviti.opendata</groupId>
   <artifactId>extractors</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>extractors</name>
   <description>Extratores de Dados Automatizados para o projeto Open Data</description>
 
@@ -22,7 +23,7 @@
     <kotlin.logging.version>2.0.3</kotlin.logging.version>
     <commons.csv.version>1.8</commons.csv.version>
     <jsoup.version>1.13.1</jsoup.version>
-    <picocli.version>4.5.2</picocli.version>
+    <okhttp.version>4.9.0</okhttp.version>
   </properties>
 
   <dependencies>
@@ -82,12 +83,7 @@
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
       <artifactId>okhttp</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>info.picocli</groupId>
-      <artifactId>picocli-spring-boot-starter</artifactId>
-      <version>${picocli.version}</version>
+      <version>${okhttp.version}</version>
     </dependency>
 
     <dependency>

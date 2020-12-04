@@ -14,7 +14,7 @@ abstract class AbstractHTMLExtractor {
 
     protected fun getJsoupDocumet(url: URL, userAgent: String = DEFAULT_USER_AGENT) = this.getJsoupDocumet(url.toString(), userAgent)
 
-    protected fun getJsoupDocumet(url: String, userAgent: String = DEFAULT_USER_AGENT): Document = Jsoup.connect(url)
+    private fun getJsoupDocumet(url: String, userAgent: String = DEFAULT_USER_AGENT): Document = Jsoup.connect(url)
             .userAgent(userAgent)
             .ignoreHttpErrors(false)
             .followRedirects(true)

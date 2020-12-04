@@ -73,7 +73,7 @@ class B3FIIRestClient(
         try {
             val param = DETALHAR_FII_QUERY_PARAM.replace(DETALHAR_FII_TICKER_PLACEHOLDER, ticker)
             val paramInBase64 = Base64.getEncoder().encodeToString(param.toByteArray())
-            val request = Request.Builder().get().url(url = DETALHAR_FII_URL.plus(paramInBase64)).build()
+            val request = Request.Builder().get().url(DETALHAR_FII_URL.plus(paramInBase64)).build()
             val response = this.httpClient.newCall(request).execute()
 
             if (response.isSuccessful && response.body != null) {
@@ -90,7 +90,7 @@ class B3FIIRestClient(
             log.error(":: FII a detalhar: {}", ticker)
             log.error(LOG_URL_REQUEST, LISTAR_FII_URL)
             log.error(LOG_MSG_EXCEPTION, ex.message)
-            throw RestClientRequestException("falha no request para a b3")
+            throw RestClientRequestException("falha no request para a b3", ex)
         }
     }
 }
