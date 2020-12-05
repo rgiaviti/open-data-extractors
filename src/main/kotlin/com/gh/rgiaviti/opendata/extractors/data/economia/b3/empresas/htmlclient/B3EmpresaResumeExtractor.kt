@@ -10,6 +10,12 @@ import org.springframework.stereotype.Component
 import java.net.URL
 import java.util.stream.Collectors
 
+/**
+ * Classe que busca, parseia e extrai informações resumidas de empresas listadas na B3 a partir do próprio site da B3.
+ *
+ * Como a B3 não disponibiliza um serviço REST para esse próposito, temos que fazer scrap de sua página na web. Com isso,
+ * ficamos mais expostos a erros.
+ */
 @Component
 class B3EmpresaResumeExtractor : AbstractHTMLExtractor() {
 
@@ -22,7 +28,7 @@ class B3EmpresaResumeExtractor : AbstractHTMLExtractor() {
         private const val DELIMITADOR_LETRA = ";"
         private const val LISTA_EMPRESAS_URL = "http://bvmf.bmfbovespa.com.br/cias-listadas/empresas-listadas/BuscaEmpresaListada.aspx?Letra="
         private const val EMPRESA_DETALHE_URL = "http://bvmf.bmfbovespa.com.br/pt-br/mercados/acoes/empresas/ExecutaAcaoConsultaInfoEmp.asp?CodCVM="
-        private const val MAX_WAIT_TIME_BETWEEN_REQUESTS = 3 // seconds
+        private const val MAX_WAIT_TIME_BETWEEN_REQUESTS = 2 // seconds
     }
 
     /**
@@ -38,7 +44,7 @@ class B3EmpresaResumeExtractor : AbstractHTMLExtractor() {
                 this.getJsoupDocumet(tableUrl).select(SELECT_TABELA_EMPRESAS_POR_LETRA).forEach { element ->
                     val name = element.select("td")[0].text()
                     val cvm = element.select("td > a").attr("href").split('=')[1].trim()
-                    empresasResumo.add(EmpresaResumoDTO(name, cvm, URL(EMPRESA_DETALHE_URL.plus(cvm))))
+                    empresasResumo.add(EmpresaResumoDTO(cvm, name, URL(EMPRESA_DETALHE_URL.plus(cvm))))
                 }
 
                 // Aguarda um tempo até o próximo request
@@ -65,6 +71,9 @@ class B3EmpresaResumeExtractor : AbstractHTMLExtractor() {
             .collect(Collectors.toList())
 }
 
+/**
+ * Objeto temporário onde salvamos os dados extraidos de resumo dos dados da empresa listada na B3.
+ */
 data class EmpresaResumoDTO(
         val codigoCvm: String,
         val nomeEmpresa: String,

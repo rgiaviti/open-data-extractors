@@ -16,9 +16,14 @@ object Helper {
         this.waitRandomTime(initial = 0, end)
     }
 
+
     fun waitRandomTime(initial: Int, end: Int) {
-        val waitTime = (initial..end).random().toLong()
-        log.info(" :: Aguardando por $waitTime segundos até o próximo FII")
+        this.waitRandomTime(LongRange(initial.toLong(), end.toLong()))
+    }
+
+    fun waitRandomTime(range: LongRange) {
+        val waitTime = (range).random()
+        log.info(" :: Pausando thread por $waitTime segundos...")
         Thread.sleep(TimeUnit.SECONDS.toMillis(waitTime))
     }
 }

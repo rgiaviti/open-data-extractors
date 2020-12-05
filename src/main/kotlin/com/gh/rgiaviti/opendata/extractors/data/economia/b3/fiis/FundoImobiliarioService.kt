@@ -1,19 +1,19 @@
 package com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.gh.rgiaviti.opendata.extractors.common.Helper
+import com.gh.rgiaviti.opendata.extractors.common.constants.FileNames.SAIDA_B3_FIIS
 import com.gh.rgiaviti.opendata.extractors.common.domains.MetaInfo
 import com.gh.rgiaviti.opendata.extractors.common.services.FileService
 import com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.domains.FundoImobiliario
-import com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.domains.RootFundoImobiliario
+import com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.domains.RootFundosImobiliarios
 import com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.restclient.B3FIIRestClient
 import com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.restclient.FundoImobiliarioDetailRes
 import com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.restclient.FundoImobiliarioResumeRes
 import com.gh.rgiaviti.opendata.extractors.infra.AppProperties
-import com.gh.rgiaviti.opendata.extractors.common.constants.FileNames.SAIDA_B3_FIIS
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import java.time.LocalDate
-import java.util.concurrent.TimeUnit
 
 /**
  * Classe de serviço dos Fundos Imobiliários responsável por orquestrar a obtenção automática dos dados a respeito dos fundos imobiliários,
@@ -33,29 +33,40 @@ class FundoImobiliarioService(
     companion object {
         private val log by lazy { KotlinLogging.logger {} }
         private const val TIPO_EXECUCAO = "stream" // stream ou parallelStream
-        private const val WAIT_TIME_BETWEEN_REQUESTS = 3L //segundos
+        private const val WAIT_TIME_BETWEEN_REQUESTS = 3 //segundos
     }
 
+    /**
+     * Extrai todos os Fundos Imobiliários listados na B3, serializa para JSON e salva em um arquivo em
+     * disco para posteriormente subirmos para o github no projeto open-data.
+     */
     fun extractFundosImobiliarios() {
         val fiis = mutableListOf<FundoImobiliario>()
 
         log.info(":: Buscando a listagem de Fundos Imobiliários na B3...")
-        val listaFiisRes = this.b3FIIRestClient.listFundosImobiliarios()
+        val listFiisRes = this.b3FIIRestClient.listFundosImobiliarios()
 
-        log.info(":: Encontrados {} Fundos Imobiliários", listaFiisRes.fundosImobiliarios!!.size)
-        log.info(":: Buscando detalhes dos FIIs um a um...")
+        log.info(":: Encontrados {} Fundos Imobiliários", listFiisRes.fundosImobiliarios!!.size)
+        log.info(":: Buscando detalhes dos FIIs um a um... Isso pode demorar um pouco.")
 
-        val listaFiisResStream = when (TIPO_EXECUCAO) {
-            "stream" -> listaFiisRes.fundosImobiliarios.stream()
-            "parallelStream" -> listaFiisRes.fundosImobiliarios.parallelStream()
+        //-----------------------------------------------------------------------------
+        // Decide o modo de streaming do response. Se stream o parallelStreal
+        //-----------------------------------------------------------------------------
+        val fiisStream = when (TIPO_EXECUCAO) {
+            "stream" -> listFiisRes.fundosImobiliarios.stream()
+            "parallelStream" -> listFiisRes.fundosImobiliarios.parallelStream()
             else -> {
-                log.error(":: Tipo de execução incorreta {}. Assumindo a default stream()", TIPO_EXECUCAO)
-                listaFiisRes.fundosImobiliarios.stream()
+                log.error(":: Tipo de execução incorreta {}. Assumindo a default 'stream()'", TIPO_EXECUCAO)
+                listFiisRes.fundosImobiliarios.stream()
             }
         }
 
-        listaFiisResStream.forEach { fiiRes ->
-            log.info(":: Buscando detalhes dos Fundo {}", fiiRes.codigo!!.toUpperCase())
+        //-----------------------------------------------------------------------------
+        // Para cada fundo retornado no response é buscado os detalhes dele, então
+        // criado o objeto e adicionado na lista de fiis.
+        //-----------------------------------------------------------------------------
+        fiisStream.forEach { fiiRes ->
+            log.info(":: Buscando detalhes dos Fundo Imobiliário: {}", fiiRes.codigo!!.toUpperCase())
             val detalheFiiRes = this.b3FIIRestClient.getFundoImobiliarioDetail(fiiRes.codigo)
 
             if (detalheFiiRes.detalhes?.ticker != null) {
@@ -65,11 +76,20 @@ class FundoImobiliarioService(
             }
 
             log.info(":: Aguardando {} segundos até buscar próximo fundo", WAIT_TIME_BETWEEN_REQUESTS)
-            Thread.sleep(TimeUnit.SECONDS.toMillis(WAIT_TIME_BETWEEN_REQUESTS))
+            Helper.waitRandomTime(WAIT_TIME_BETWEEN_REQUESTS)
         }
 
+        // Salva o JSON em arquivo e ja era
+        this.saveFile(fiis)
+    }
+
+    /**
+     * Método que monta o JSON final e salva o arquivo em disco para depois subirmos checarmos e subirmos
+     * manual no github
+     */
+    private fun saveFile(fiis: List<FundoImobiliario>) {
         val metaInfo = this.newMetaInfo(fiis.size)
-        val rootFundoImobiliario = RootFundoImobiliario(metaInfo, fiis)
+        val rootFundoImobiliario = RootFundosImobiliarios(metaInfo, fiis.sortedBy { it.ticker })
 
         log.info(":: Salvando JSON com os Fundos Imobiliários em {}", this.appProperties.dirSaidaArquivos.plus(SAIDA_B3_FIIS))
         this.fileService.save(mapper.writeValueAsString(rootFundoImobiliario), this.appProperties.dirSaidaArquivos.plus(SAIDA_B3_FIIS))
