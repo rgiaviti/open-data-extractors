@@ -26,6 +26,7 @@ class FileService {
         log.info("::: Salvando arquivo em: {}", file.absolutePath)
 
         if (file.exists()) { file.delete() }
+        file.parentFile.mkdirs()
         file.createNewFile()
         this.checkFile(content, file)
         file.writeBytes(content)

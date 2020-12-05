@@ -5,67 +5,40 @@ import org.springframework.stereotype.Component
 
 @Component
 data class BacenProperties(
+
         @Value("\${app.configs.bacen.ipca.metainfos.fontes}")
-        val ipcaFontes: Array<String>,
+        val ipcaFontes: List<String>,
 
         @Value("\${app.configs.bacen.ipca.metainfos.site}")
         val ipcaSite: String,
 
         @Value("\${app.configs.bacen.inpc.metainfos.fontes}")
-        val inpcFontes: Array<String>,
+        val inpcFontes: List<String>,
 
         @Value("\${app.configs.bacen.inpc.metainfos.site}")
         val inpcSite: String,
 
         @Value("\${app.configs.bacen.igpm.metainfos.fontes}")
-        val igpmFontes: Array<String>,
+        val igpmFontes: List<String>,
 
         @Value("\${app.configs.bacen.igpm.metainfos.site}")
         val igpmSite: String,
 
         @Value("\${app.configs.bacen.selic.metainfos.fontes}")
-        val selicFontes: Array<String>,
+        val selicFontes: List<String>,
 
         @Value("\${app.configs.bacen.selic.metainfos.site}")
         val selicSite: String,
 
         @Value("\${app.configs.bacen.cdi.metainfos.fontes}")
-        val cdiFontes: Array<String>,
+        val cdiFontes: List<String>,
 
         @Value("\${app.configs.bacen.cdi.metainfos.site}")
-        val cdiSite: String
-) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        val cdiSite: String,
 
-        other as BacenProperties
+        @Value("\${app.configs.bacen.tr.metainfos.fontes}")
+        val trFontes: List<String>,
 
-        if (!ipcaFontes.contentEquals(other.ipcaFontes)) return false
-        if (ipcaSite != other.ipcaSite) return false
-        if (!inpcFontes.contentEquals(other.inpcFontes)) return false
-        if (inpcSite != other.inpcSite) return false
-        if (!igpmFontes.contentEquals(other.igpmFontes)) return false
-        if (igpmSite != other.igpmSite) return false
-        if (!selicFontes.contentEquals(other.selicFontes)) return false
-        if (selicSite != other.selicSite) return false
-        if (!cdiFontes.contentEquals(other.cdiFontes)) return false
-        if (cdiSite != other.cdiSite) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = ipcaFontes.contentHashCode()
-        result = 31 * result + ipcaSite.hashCode()
-        result = 31 * result + inpcFontes.contentHashCode()
-        result = 31 * result + inpcSite.hashCode()
-        result = 31 * result + igpmFontes.contentHashCode()
-        result = 31 * result + igpmSite.hashCode()
-        result = 31 * result + selicFontes.contentHashCode()
-        result = 31 * result + selicSite.hashCode()
-        result = 31 * result + cdiFontes.contentHashCode()
-        result = 31 * result + cdiSite.hashCode()
-        return result
-    }
-}
+        @Value("\${app.configs.bacen.tr.metainfos.site}")
+        val trSite: String
+)

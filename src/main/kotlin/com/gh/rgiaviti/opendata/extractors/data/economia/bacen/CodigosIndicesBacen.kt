@@ -1,6 +1,6 @@
 package com.gh.rgiaviti.opendata.extractors.data.economia.bacen
 
-enum class CodigosIndicesBacen(val codigo: String) {
+enum class IndiceBacen(val codigo: String) {
     IPCA("433"),
     INPC("188"),
     IGPM("189"),

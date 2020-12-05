@@ -89,6 +89,14 @@
       "type": "java.lang.String"
     },
     {
+      "name": "app.configs.bacen.tr.metainfos.site",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "app.configs.bacen.tr.metainfos.fontes",
+      "type": "java.lang.String"
+    },
+    {
       "name": "app.infra.html.user-agent",
       "type": "java.lang.String"
     }

@@ -10,7 +10,7 @@ import java.time.LocalDate
 data class IndiceComum(
 
         @field: JsonProperty("data")
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+        @field: JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
         val data: LocalDate,
 
         @field: JsonProperty("valor")

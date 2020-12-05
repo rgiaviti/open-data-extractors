@@ -1,6 +1,7 @@
 package com.gh.rgiaviti.opendata.extractors.data.economia.b3.fiis.restclient
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import com.gh.rgiaviti.opendata.extractors.common.constants.LogMessages.LOG_HTTP_STATUS_CODE
 import com.gh.rgiaviti.opendata.extractors.common.constants.LogMessages.LOG_MSG_EXCEPTION
 import com.gh.rgiaviti.opendata.extractors.common.constants.LogMessages.LOG_URL_REQUEST
@@ -49,7 +50,7 @@ class B3FIIRestClient(
             val response = this.httpClient.newCall(request).execute()
 
             if (response.isSuccessful && response.body != null) {
-                return mapper.readValue(response.body!!.string(), FundoImobiliarioListRes::class.java)
+                return mapper.readValue(response.body!!.string())
             } else {
                 log.error(":: O request foi executado na B3 para obtenção de FIIs, porém o body é nulo ou status é diferente de 200")
                 log.error(LOG_URL_REQUEST, LISTAR_FII_URL)
@@ -77,7 +78,7 @@ class B3FIIRestClient(
             val response = this.httpClient.newCall(request).execute()
 
             if (response.isSuccessful && response.body != null) {
-                return mapper.readValue(response.body!!.string(), GetFundoImobiliarioDetailRes::class.java)
+                return mapper.readValue(response.body!!.string())
             } else {
                 log.error(":: O request foi executado na B3 para obtenção dos detalhes, porém o body é nulo ou status é diferente de 200")
                 log.error(":: FII a detalhar: {}", ticker)

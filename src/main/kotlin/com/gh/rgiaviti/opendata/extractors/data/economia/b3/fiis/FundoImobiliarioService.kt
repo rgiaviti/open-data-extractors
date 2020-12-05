@@ -30,6 +30,9 @@ class FundoImobiliarioService(
         private val fiiProperties: FundoImobiliariosProperties,
         private val mapper: ObjectMapper) {
 
+    /**
+     * Constantes e configurações da classe
+     */
     companion object {
         private val log by lazy { KotlinLogging.logger {} }
         private const val TIPO_EXECUCAO = "stream" // stream ou parallelStream
